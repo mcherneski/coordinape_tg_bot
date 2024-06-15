@@ -32,5 +32,4 @@ bot.start((ctx) => {
     ctx.scene.enter('importWallet')
 })
 
-
-
+bot.launch()
