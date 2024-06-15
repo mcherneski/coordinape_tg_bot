@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/coordinape_bot
+    destination: /home/ec2-user/coordinape_tg_bot
 file_exists_behaviour: OVERWRITE
 hooks:
 # Install
