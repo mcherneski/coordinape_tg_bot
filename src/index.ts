@@ -1,14 +1,27 @@
 import { Telegraf, session, Context, Scenes } from 'telegraf'
 import { AppContext } from './utils/types'
+import { type MenuButton, type MenuButtonWebApp } from 'telegraf/typings/core/types/typegram'
+
 
 require('dotenv').config()
 
 const bot = new Telegraf<Scenes.WizardContext>(process.env.BOT_TOKEN as string)
 
+const userMenuButton: MenuButton = {
+    text: 'Coordinape',
+    type: 'web_app',
+    web_app: {
+        url: 'https://bp-tg-miniapp.vercel.app/'
+    }
+}
+
+let chatId: number
+
 
 export const startupScene = new Scenes.WizardScene<Scenes.WizardContext>(
     'importWallet',
     async (ctx) => {
+        
         await ctx.reply('Step 1: What is your name?')
         return ctx.wizard.next()
     },
@@ -29,7 +42,14 @@ bot.use(session())
 bot.use(stage.middleware())
 
 bot.start((ctx) => {
-    ctx.scene.enter('importWallet')
+    if (ctx.chat)
+        {
+            chatId = ctx.chat?.id as number
+        }
+        
+    bot.telegram.setChatMenuButton({chatId: chatId, menuButton: userMenuButton})
+
+    // ctx.scene.enter('importWallet')
 })
 
 bot.launch()
