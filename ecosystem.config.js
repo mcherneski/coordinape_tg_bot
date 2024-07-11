@@ -4,7 +4,7 @@ module.exports = {
             name: "Coordinape_Bot",
             script: "node dist/index.js",
             env: {
-                NODE_ENV: "dev",
+                NODE_ENV: "production",
                 PORT: 3000
             },
             watch: true,
