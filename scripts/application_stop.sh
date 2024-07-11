@@ -1,11 +1,15 @@
-echo 'Stopping pm2' >> /home/ec2-user/coordinape_bot_logs/deploy.log
-pm2 stop Coordinape_Bot >> /home/ec2-user/coordinape_bot_logs/deploy.log
-echo 'Removing old directory' >> /home/ec2-user/coordinape_bot_logs/deploy.log
-rm -rf /home/ec2-user/coordinape_tg_bot/dist >> /home/ec2-user/coordinape_bot_logs/deploy.log
+if pm2 list | grep -q Coordinape_bot; then
+    echo 'Stopping pm2' >> /home/ec2-user/coordinape_bot_logs/deploy.log
+    pm2 stop Coordinape_bot >> /home/ec2-user/coordinape_bot_logs/deploy.log
+else
+    echo 'Coordinape_bot is not running.' >> /home/ec2-user/coordinape_bot_logs/deploy.log
+fi
 
-echo 'Cleaning up old files' >> /home/ec2-user/coordinape_bot_logs/deploy.log
 DEPLOY_DIR=/home/ec2-user/coordinape_tg_bot
 
 if [ -d "$DEPLOY_DIR" ]; then
+    echo 'Removing old directory' >> /home/ec2-user/coordinape_bot_logs/deploy.log
     rm -rf "$DEPLOY_DIR/*"
-fi 
+else
+    echo 'Directory does not exist' >> /home/ec2-user/coordinape_bot_logs/deploy.log
+fi
