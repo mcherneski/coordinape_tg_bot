@@ -11,7 +11,7 @@ const userMenuButton: MenuButton = {
     text: 'Coordinape',
     type: 'web_app',
     web_app: {
-        url: 'https://bp-tg-miniapp.vercel.app/'
+        url: 'https://coordinape-bot-webapp.vercel.app/'
     }
 }
 
