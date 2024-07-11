@@ -21,7 +21,7 @@ let chatId: number
 export const startupScene = new Scenes.WizardScene<Scenes.WizardContext>(
     'importWallet',
     async (ctx) => {
-        
+        console.log('Arbitrary change')
         await ctx.reply('Step 1: What is your name?')
         return ctx.wizard.next()
     },
