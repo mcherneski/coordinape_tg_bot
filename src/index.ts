@@ -52,4 +52,8 @@ bot.start((ctx) => {
     // ctx.scene.enter('importWallet')
 })
 
+bot.command('gm', (ctx) => {
+    return ctx.reply(`GM ${ctx.from?.first_name}!`)
+})
+
 bot.launch()
