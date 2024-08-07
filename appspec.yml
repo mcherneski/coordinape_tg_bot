@@ -1,8 +1,8 @@
 version: 0.0
 os: linux
 files:
-  - source: /dist
-    destination: /home/ec2-user/coordinape_tg_bot/dist
+  - source: /dist/
+    destination: /home/ec2-user/coordinape_tg_bot/dist/
 file_exists_behaviour: OVERWRITE
 hooks:
 # Install
