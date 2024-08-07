@@ -13,10 +13,9 @@ const userMenuButton: MenuButton = {
     web_app: {
         url: 'https://coordinape-bot-webapp.vercel.app/'
     }
-}
+}   
 
 let chatId: number
-
 
 export const startupScene = new Scenes.WizardScene<Scenes.WizardContext>(
     'importWallet',
@@ -48,7 +47,8 @@ bot.start((ctx) => {
         }
         
     bot.telegram.setChatMenuButton({chatId: chatId, menuButton: userMenuButton})
-
+    
+    ctx.reply('Welcome to Coordinape Bot! Please click the button below to access the Coordinape Web App.')
     // ctx.scene.enter('importWallet')
 })
 
